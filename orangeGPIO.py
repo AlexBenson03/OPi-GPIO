@@ -2,7 +2,7 @@ import OPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7, GPIO.OUT)
-GPIO.output(7,GPIO.High)
+GPIO.output(7,GPIO.HIGH)
 time.sleep(1)
 GPIO.output(7,GPIO.LOW)
 GPIO.cleanup()
