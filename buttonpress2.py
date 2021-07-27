@@ -1,9 +1,9 @@
 import OPi.GPIO as GPIO
 import time
-GPIO.setmode(GPIO.BOARD)
 i=2
 n=0
 while i > n:
+    GPIO.setmode(GPIO.BOARD)
     GPIO.setup(12, GPIO.IN)
     GPIO.setup(7,GPIO.OUT)
     while GPIO.input(12) == GPIO.LOW:
