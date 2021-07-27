@@ -9,6 +9,7 @@ x = 0
 if x < 3:
     GPIO.output(7, GPIO.HIGH)
     time.sleep(1)
+    GPIO.OUTPUT(7, GPIO.LOW)
     x = x + 1
 print("pressed")
 GPIO.cleanup()
