@@ -11,5 +11,5 @@ while i > n:
     while GPIO.input(12) == GPIO.LOW:
         time.sleep(0.01)
     if GPIO.input(12) == GPIO.HIGH:
-        response = requests.post(api_url, json={'command':'start'}, headers = myheaders)
+        response = requests.post(api_url, json={'command':'cancel'}, headers = myheaders)
         print(response.status_code)
