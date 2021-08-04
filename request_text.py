@@ -1,4 +1,4 @@
-imimport requests
+import requests
 import OPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BOARD)
