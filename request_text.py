@@ -8,4 +8,5 @@ n = 1
 while i > n:
     while GPIO.input(12) == GPIO.LOW:
         time.sleep(0.01)
+    print("button pressed")
     stop.stopcommd
