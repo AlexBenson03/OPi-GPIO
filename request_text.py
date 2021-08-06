@@ -12,7 +12,9 @@ while i > n:
         time.sleep(0.01)
     if GPIO.input(12) == GPIO.HIGH:
         response = requests.post('http://8.16.250.212:4000/api/job', json={'command':'cancel'}, headers = myheaders)
+        time.sleep(0.5)
         response2 = requests.post('http://8.16.250.212:4001/api/job', json={'command':'cancel'}, headers = myheaders)
+        time.sleep(0.5)
         response3 = requests.post('http://8.16.250.212:4002/api/job', json={'command':'cancel'}, headers = myheaders)
         print(response.status_code)
         print(response2.status_code)
