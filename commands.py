@@ -1,4 +1,5 @@
 import requests
+
 def stopcommd():
     r0 = requests.post('http://8.16.250.212:4000/api/job', json={'command': 'cancel'}, headers = {'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
     r1 = requests.post('http://8.16.250.212:4001/api/job', json={'command': 'cancel'}, headers = {'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
