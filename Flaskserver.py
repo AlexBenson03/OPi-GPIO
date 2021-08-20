@@ -15,11 +15,9 @@ def hello_world():
 
 @app.route('/Posting', methods=['POST'])
 def Posting():
-    Pjid = 0
-    Pjid += 1
-    printjob = {}
+    printjob = []
     form_data = request.form.to_dict()
-    printjob[Pjid] = form_data
+    printjob.append(form_data)
     print(printjob)
     extra_data = json.loads(form_data['extra'])
     name_data = extra_data['name']
