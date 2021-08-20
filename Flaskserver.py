@@ -15,10 +15,11 @@ def hello_world():
 
 @app.route('/Posting', methods=['POST'])
 def Posting():
+    id = 0
+    printjob = {}
     form_data = request.form.to_dict()
-    print("--------------")
-    print(form_data)
-    print("--------------")
+    printjob[id + 1] = form_data
+    print(printjob)
     extra_data = json.loads(form_data['extra'])
     name_data = extra_data['name']
     while form_data['topic'] == 'Print Done':
