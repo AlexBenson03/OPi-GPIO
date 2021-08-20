@@ -17,7 +17,7 @@ def hello_world():
 def Posting():
     printjob = []
     form_data = request.form.to_dict()
-    printjob.append(form_data)
+    printjob.append(request.form)
     print(printjob)
     extra_data = json.loads(form_data['extra'])
     name_data = extra_data['name']
