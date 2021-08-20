@@ -17,10 +17,10 @@ def hello_world():
 def Posting():
     printjob = []
     form_data = request.form.to_dict()
-    printjob.append(request.form)
-    print(printjob)
     extra_data = json.loads(form_data['extra'])
     name_data = extra_data['name']
+    printjob.append(name_data)
+    print(printjob)
     while form_data['topic'] == 'Print Done':
         while GPIO.input(12) == GPIO.LOW:
             time.sleep(0.01)
