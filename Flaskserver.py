@@ -30,11 +30,9 @@ def Posting():
         if GPIO.input(12) == GPIO.HIGH:
           requests.post(f'http://8.16.250.212:4000/api/files/local/{name_data}', json={'command': 'select', 'print': 'true'}, headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
-          form_data = ()
-          extra_data = ()
-          name_data = ()
     return 'JSON posted'
 
 
 if __name__ =='__main__':
     app.run(debug=True, host='0.0.0.0')
+
