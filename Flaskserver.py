@@ -31,6 +31,8 @@ def Posting():
     # readjob = open("printjob.txt", "r")
     # print(readjob.read())
     while form_data['topic'] == 'Print Done':
+        while GPIO.input(12) == GPIO.LOW:
+            time.sleep(0.01)
         if GPIO.input(12) == GPIO.HIGH:
             requests.post(f'http://8.16.250.212:4000/api/files/local/{name_data}', json={'command': 'select'}, headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
