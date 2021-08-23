@@ -24,15 +24,21 @@ def Posting():
     form_data = request.form.to_dict()
     extra_data = json.loads(form_data['extra'])
     name_data = extra_data['name']
+    print_name = [extra_data['name']]
+    with open("printjob.txt", "w") as printjob:
+        printjob.writelines("%s\n" % line for line in print_name)
+    printjob.close()
+    printjob = open("printjob.txt", "r")
+    print(printjob.read())
     while form_data['topic'] == 'Print Done':
-        while GPIO.input(12) == GPIO.LOW:
-           time.sleep(0.01)
         if GPIO.input(12) == GPIO.HIGH:
-          requests.post(f'http://8.16.250.212:4000/api/files/local/{name_data}', json={'command': 'select'}, headers={
+            requests.post(f'http://8.16.250.212:4000/api/files/local/{name_data}', json={'command': 'select'}, headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
-                        
-          requests.post('http://8.16.250.212:4000/api/job', json={'command': 'start'}, headers={
+            time.sleep(0.5)
+            requests.post('http://8.16.250.212:4000/api/job', json={'command': 'start'}, headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
+        break
+
     return 'JSON posted'
 
 
