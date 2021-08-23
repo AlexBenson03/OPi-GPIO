@@ -15,12 +15,14 @@ def hello_world():
 
 @app.route('/Posting', methods=['POST'])
 def Posting():
-    printjob = []
+    printjob = open("printjob.txt", "a")
     form_data = request.form.to_dict()
     extra_data = json.loads(form_data['extra'])
     name_data = extra_data['name']
-    printjob.append(name_data)
-    print(printjob)
+    printjob.write(name_data)
+    printjob.close()
+    printjob = open("printjob.txt", "r")
+    print(printjob.read())
     while form_data['topic'] == 'Print Done':
         while GPIO.input(12) == GPIO.LOW:
             time.sleep(0.01)
