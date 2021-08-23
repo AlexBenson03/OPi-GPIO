@@ -24,12 +24,6 @@ def Posting():
     form_data = request.form.to_dict()
     extra_data = json.loads(form_data['extra'])
     name_data = extra_data['name']
-#   print_name = [extra_data['name']]
-#   with open("printjob.txt", "w") as printjob:
-#        printjob.writelines("%s\n" % line for line in print_name)
-#   printjob.close()
-#   printjob = open("printjob.txt", "r")
-#   print(printjob.read())
     while form_data['topic'] == 'Print Done':
         while GPIO.input(12) == GPIO.LOW:
            time.sleep(0.01)
@@ -40,3 +34,7 @@ def Posting():
           extra_data = ()
           name_data = ()
     return 'JSON posted'
+
+
+if __name__ =='__main__':
+    app.run(debug=True, host='0.0.0.0')
