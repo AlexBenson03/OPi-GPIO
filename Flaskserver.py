@@ -19,7 +19,7 @@ def hello_world():
 @app.route('/Posting', methods=['POST', 'GET', 'PUT'])
 def Posting():
     print("-----------")
-    print(json.dumps(request))
+    print(json.dumps(request.form))
     print("-----------")
     form_data = request.form.to_dict()
     extra_data = json.loads(form_data['extra'])
