@@ -16,7 +16,7 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 
-@app.route('/Posting', methods=['POST', 'GET', 'PUT'])
+@app.route('/Posting', methods=['POST'])
 def Posting():
     print("-----------")
     print(json.dumps(request.form))
@@ -24,12 +24,6 @@ def Posting():
     form_data = request.form.to_dict()
     extra_data = json.loads(form_data['extra'])
     name_data = extra_data['name']
-    # print_name = extra_data['name']
-    # with open("printjob.txt", "w") as printjob:
-    #     printjob.writelines("%s\n" % line for line in print_name)
-    # printjob.close()
-    # readjob = open("printjob.txt", "r")
-    # print(readjob.read())
     while form_data['topic'] == 'Print Done':
         while GPIO.input(12) == GPIO.LOW:
             time.sleep(0.01)
@@ -44,3 +38,4 @@ def Posting():
 
 if __name__ =='__main__':
     app.run(debug=True, host='0.0.0.0')
+
