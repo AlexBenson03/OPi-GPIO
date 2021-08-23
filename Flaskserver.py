@@ -15,7 +15,7 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 
-@app.route('/Posting', methods=['POST'])
+@app.route('/Posting', methods=['POST', 'GET', 'PUT'])
 def Posting():
    form_data = request.form.to_dict()
    extra_data = json.loads(form_data['extra'])
