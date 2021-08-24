@@ -32,7 +32,7 @@ def Posting():
     while GPIO.input(12) == GPIO.LOW:
             time.sleep(0.01)
             if GPIO.input(12) == GPIO.HIGH:
-                print(form_data['topic'])
+                #print(form_data['topic'])
                 print(read_job)
                 requests.post(f'http://8.16.250.212:4000/api/files/local/{read_job}', json={'command': 'select'}, headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
