@@ -24,16 +24,20 @@ def Posting():
     form_data = request.form.to_dict()
     extra_data = json.loads(form_data['extra'])
     name_data = extra_data['name']
+    print(form_data['topic'])
+    print(extra_data['name'])
     while form_data['topic'] == 'Print Done':
         while GPIO.input(12) == GPIO.LOW:
             time.sleep(0.01)
         if GPIO.input(12) == GPIO.HIGH:
+            print(form_data['topic'])
+            print(extra_data['name'])
             requests.post(f'http://8.16.250.212:4000/api/files/local/{name_data}', json={'command': 'select'}, headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
             time.sleep(0.5)
             requests.post('http://8.16.250.212:4000/api/job', json={'command': 'start'}, headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
-        return 'JSON posted'
+    return 'JSON posted'
 
 
 if __name__ =='__main__':
