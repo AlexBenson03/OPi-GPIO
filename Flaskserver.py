@@ -1,4 +1,4 @@
-rom flask import Flask, request
+from flask import Flask, request
 import json
 import time
 import OPi.GPIO as GPIO
@@ -33,7 +33,7 @@ def Posting():
             if GPIO.input(12) == GPIO.HIGH:
                 req_get = requests.get('http://8.16.250.212:4000//api/job', headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
-                print(json.dumps(req_get))
+                print(req_get)
                 #print(form_data['topic'])
                 print(read_job)
                 requests.post(f'http://8.16.250.212:4000/api/files/local/{read_job}', json={'command': 'select'}, headers={
@@ -46,3 +46,4 @@ def Posting():
 
 if __name__ =='__main__':
     app.run(debug=True, host='0.0.0.0')
+
