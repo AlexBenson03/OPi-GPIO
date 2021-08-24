@@ -38,8 +38,11 @@ def Posting():
                 req_data = requests.get('http://8.16.250.212:4000//api/job', headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
                 name_data = json.loads(req_data.text)
+                print(name_data)
                 file_data = name_data['file']
+                print(file_data)
                 print_job = file_data['name']
+                print(print_job)
                 requests.post(f'http://8.16.250.212:4000/api/files/local/{print_job}', json={'command': 'select'}, headers={
                          'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
                 time.sleep(0.5)
