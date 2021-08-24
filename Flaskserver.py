@@ -37,7 +37,10 @@ def Posting():
             if GPIO.input(12) == GPIO.HIGH:
                 req_data = requests.get('http://8.16.250.212:4000//api/job', headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
-                req_data.json
+                print('================')
+                print(req_data.json)
+                print('===============')
+                print(req_data.text)
                 requests.post(f'http://8.16.250.212:4000/api/files/local/{read_job}', json={'command': 'select'}, headers={
                          'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
                 time.sleep(0.5)
