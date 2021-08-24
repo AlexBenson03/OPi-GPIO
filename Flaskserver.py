@@ -16,7 +16,7 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 
-@app.route('/Posting', methods=['POST'])
+@app.route('/Posting', methods=['POST', 'GET'])
 def Posting():
     print("-----------")
     print(json.dumps(request.form))
@@ -48,3 +48,4 @@ def Posting():
 
 if __name__ =='__main__':
     app.run(debug=True, host='0.0.0.0')
+
