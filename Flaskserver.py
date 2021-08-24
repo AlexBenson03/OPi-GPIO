@@ -18,9 +18,9 @@ def hello_world():
 
 @app.route('/Posting', methods=['POST'])
 def Posting():
-    print("-----------")
-    print(json.dumps(request.form))
-    print("-----------")
+    # print("-----------")
+    # print(json.dumps(request.form))
+    # print("-----------")
     form_data = request.form.to_dict()
     extra_data = json.loads(form_data['extra'])
     #name_data = extra_data['name']
@@ -31,21 +31,18 @@ def Posting():
     while GPIO.input(12) == GPIO.LOW:
             time.sleep(0.01)
             if GPIO.input(12) == GPIO.HIGH:
-                req_get = requests.get('http://8.16.250.212:4000//api/job', headers={
+                requests.get('http://8.16.250.212:4000//api/job', headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
-                get_data =  req_get.to_dict()
-                file_data = json.loads(get_data['file'])
-                print(file_data['name'])
                 #print(form_data['topic'])
-                print(read_job)
-                requests.post(f'http://8.16.250.212:4000/api/files/local/{read_job}', json={'command': 'select'}, headers={
-                        'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
-                time.sleep(0.5)
-                requests.post('http://8.16.250.212:4000/api/job', json={'command': 'start'}, headers={
-                        'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
+                # print(read_job)
+                # requests.post(f'http://8.16.250.212:4000/api/files/local/{read_job}', json={'command': 'select'}, headers={
+                #         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
+                # time.sleep(0.5)
+                # requests.post('http://8.16.250.212:4000/api/job', json={'command': 'start'}, headers={
+                #         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
     return 'JSON posted'
 
 
 if __name__ =='__main__':
     app.run(debug=True, host='0.0.0.0')
-
+    
