@@ -25,6 +25,7 @@ def Posting():
             print('buttton pressed')
             req_data = requests.get('http://8.16.250.212:4000//api/job', headers={
                      'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
+            time.sleep(0.5)
             name_data = json.loads(req_data.text)
             print(name_data)
             job_data = name_data['job']
@@ -43,3 +44,4 @@ def Posting():
 
 if __name__ =='__main__':
     app.run(debug=True, host='0.0.0.0')
+
