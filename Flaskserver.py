@@ -17,6 +17,7 @@ def Posting():
     while GPIO.input(12) == GPIO.LOW:
             time.sleep(0.01)
             if GPIO.input(12) == GPIO.HIGH:
+                print('button pressed')
                 req_data = requests.get('http://8.16.250.212:4000//api/job', headers={
                         'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
                 name_data = json.loads(req_data.text)
@@ -26,7 +27,7 @@ def Posting():
                 print_job = file_data['name']
                 requests.post(f'http://8.16.250.212:4000/api/files/local/{print_job}', json={'command': 'select'}, headers={
                          'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
-                time.sleep(0.25)
+                time.sleep(0.5)
                 requests.post('http://8.16.250.212:4000/api/job', json={'command': 'start'}, headers={
                          'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
     return 'JSON posted'
