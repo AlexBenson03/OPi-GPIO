@@ -19,18 +19,24 @@ def hello_world():
 @app.route('/Posting', methods=['POST', 'GET'])
 def Posting():
     while GPIO.input(12) == GPIO.LOW:
-            time.sleep(0.01)
-            if GPIO.input(12) == GPIO.HIGH:
-                req_data = requests.get('http://8.16.250.212:4000//api/job', headers={
-                        'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
-                name_data = json.loads(req_data.text)
-                job_data = name_data['job']
-                file_data = job_data['file']
-                print_job = file_data['name']
-                requests.post(f'http://8.16.250.212:4000/api/files/local/{print_job}', json={'command': 'select'}, headers={
+        print('button not pressed')
+        time.sleep(0.01)
+        if GPIO.input(12) == GPIO.HIGH:
+            print('buttton pressed')
+            req_data = requests.get('http://8.16.250.212:4000//api/job', headers={
+                     'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
+            name_data = json.loads(req_data.text)
+            print(name_data)
+            job_data = name_data['job']
+            print(job_data)
+            file_data = job_data['file']
+            print(file_data)
+            print_job = file_data['name']
+            print(print_job)
+            requests.post(f'http://8.16.250.212:4000/api/files/local/{print_job}', json={'command': 'select'}, headers={
                          'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
-                time.sleep(0.5)
-                requests.post('http://8.16.250.212:4000/api/job', json={'command': 'start'}, headers={
+            time.sleep(0.5)
+            requests.post('http://8.16.250.212:4000/api/job', json={'command': 'start'}, headers={
                          'X-api-key': '0FF9258103494737B416217A10687F1B', 'Content-Type': 'application/json'})
     return 'JSON posted'
 
